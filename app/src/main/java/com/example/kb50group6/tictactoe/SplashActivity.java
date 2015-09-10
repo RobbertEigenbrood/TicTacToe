@@ -37,7 +37,6 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(i);
                 // Close this activity
                 finish();
-                //onClickLogo();
             }
         }, SPLASH_TIME_OUT);
 
