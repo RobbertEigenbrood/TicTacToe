@@ -11,8 +11,13 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        houJeSmoel(1);
     }
-
+    public int nee = 5;
+    public void houJeSmoel(int ja)
+    {
+        ja = nee;
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
