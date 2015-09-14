@@ -1,21 +1,21 @@
 package com.example.kb50group6.tictactoe;
 
-import android.app.Dialog;
 //import android.app.FragmentManager;
+import android.graphics.Typeface;
 import android.support.v4.app.FragmentManager;
 //import android.app.FragmentTransaction;
 import android.support.v4.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v7.app.AlertDialog;
+        import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
                     android.R.id.content, mainActivityFragment);
         }
         fragmentTransaction.commit();
+
+
     }
 
     @Override
