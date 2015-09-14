@@ -1,15 +1,21 @@
 package com.example.kb50group6.tictactoe;
 
 import android.app.Dialog;
+//import android.app.FragmentManager;
+import android.support.v4.app.FragmentManager;
+//import android.app.FragmentTransaction;
+import android.support.v4.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,7 +23,31 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_main);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction =
+                fragmentManager.beginTransaction();
+
+        //---Get the current display info---
+        WindowManager wm = getWindowManager();
+        Display display = wm.getDefaultDisplay();
+        /* TODO: getWidth and getHeight are deprecated. Mind that this is the reason why we import "support.v4" */
+        if(display.getWidth() > display.getHeight()){
+            //---Portrait mode---
+            MainActivityLandscapeFragment mainActivityLandscapeFragment = new MainActivityLandscapeFragment();
+            // android.R.id.content refers to the content view of the activity
+            fragmentTransaction.replace(
+                    android.R.id.content, mainActivityLandscapeFragment);
+        }
+        else
+        {
+            //---Landscape mode
+            MainActivityFragment mainActivityFragment = new MainActivityFragment();
+            // android.R.id.content refers to the content view of the activity
+            fragmentTransaction.replace(
+                    android.R.id.content, mainActivityFragment);
+        }
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -47,27 +77,16 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void onClickButtonHowToPlay(View view){
+    public void onClickButtonSettings(View view){
 
-        //TODO: decide which one of the following implementations we're going to use
-
-        /* We create a new DialogFragment of our "HowToPlayDialogFragment" Class -- */
-              //DialogFragment newFragment = new HowToPlayDialogFragment();
-        /* --and call show(). We give it a tag so we can do something with it afterwards (or simply because we have to, anyway): */
-              //newFragment.show(getSupportFragmentManager(), "howtoplay");
-
-        /*
-            The following code is another (better?) way of achieving the above. This way,
-            we don't need the "HowToPlayDialogFragment" anymore.
-         */
-
+        /* Create a dynamic AlertDialog instead of instantiating an entire class */
         AlertDialog.Builder builder = new AlertDialog.Builder(this); //this Activity / This Context
-        builder.setMessage(R.string.how_to_play_text)
+        builder.setTitle(R.string.how_to_play_title)
+                .setMessage(R.string.how_to_play_text)
                 .setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // Empty.
                         // Here we decide what happens when the user clicks "Ok"
-                        Toast.makeText(getBaseContext(), "OK clicked!", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .show();
@@ -76,23 +95,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickButtonExit(View view){
         finish();
-    }
-
-    public static class HowToPlayDialogFragment extends DialogFragment {
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            // Use the Builder class for convenient dialog construction
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setMessage(R.string.how_to_play_text)
-                    .setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            // Empty.
-                            // Here we decide what happens when the user clicks "Ok"
-                        }
-                    });
-            // Create the AlertDialog object and return it
-            return builder.create();
-        }
     }
 
 }

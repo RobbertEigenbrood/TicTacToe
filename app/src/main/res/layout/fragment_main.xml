@@ -11,21 +11,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PORTRAIT"
-        android:id="@+id/textView2"
-        android:layout_alignParentTop="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="65dp"
         android:textColor="@color/white"
         android:text="@string/play"
         android:id="@+id/textViewPlay"
-        android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="112dp" />
+        android:layout_marginTop="112dp"
+        android:onClick="onClickButtonPlay"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -36,7 +29,8 @@
         android:text="@string/settings"
         android:id="@+id/textViewSettings"
         android:layout_below="@+id/textViewPlay"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickButtonSettings" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -47,6 +41,7 @@
         android:text="@string/exit"
         android:id="@+id/textViewExit"
         android:layout_below="@+id/textViewSettings"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickButtonExit"/>
 
 </RelativeLayout>

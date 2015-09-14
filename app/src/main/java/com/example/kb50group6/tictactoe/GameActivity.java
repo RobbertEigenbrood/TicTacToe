@@ -1,10 +1,14 @@
 package com.example.kb50group6.tictactoe;
 
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -13,9 +17,39 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
+        //setContentView(R.layout.activity_game);
+        //TODO: here we need to implement a (Bundle) savedInstanceState
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction =
+                fragmentManager.beginTransaction();
+
+        //---Get the current display info---
+        WindowManager wm = getWindowManager();
+        Display display = wm.getDefaultDisplay();
+        /* TODO: getWidth and getHeight are deprecated. Mind that this is the reason why we import "support.v4" */
+        if(display.getWidth() > display.getHeight()){
+            //---Portrait mode---
+            GameActivityLandscapeFragment gameActivityLandscapeFragment = new GameActivityLandscapeFragment();
+            // android.R.id.content refers to the content view of the activity
+            fragmentTransaction.replace(
+                    android.R.id.content, gameActivityLandscapeFragment);
+        }
+        else
+        {
+            //---Landscape mode
+            GameActivityFragment gameActivityFragment = new GameActivityFragment();
+            // android.R.id.content refers to the content view of the activity
+            fragmentTransaction.replace(
+                    android.R.id.content, gameActivityFragment);
+        }
+        fragmentTransaction.commit();
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();  // Always call the superclass method first
+        //TODO: save data here when user turns the screen. Maybe implement onStop() as well(?)
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
