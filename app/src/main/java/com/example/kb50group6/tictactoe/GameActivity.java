@@ -10,10 +10,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class GameActivity extends AppCompatActivity {
     private boolean humanTurn = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +45,8 @@ public class GameActivity extends AppCompatActivity {
                     android.R.id.content, gameActivityFragment);
         }
         fragmentTransaction.commit();
+
+
     }
 
     @Override
@@ -99,17 +103,25 @@ public class GameActivity extends AppCompatActivity {
             case R.id.imageView8:
                 handleInput(iv);
                 break;
+            case R.id.imageView9:
+                handleInput(iv);
+                break;
         }
     }
 
     public void handleInput(ImageView iv){
+        TextView tv = (TextView) findViewById(R.id.turn_tv);
         if(humanTurn){
             iv.setImageResource(R.drawable.black_circle);
             humanTurn = false;
+            //dit niet hardcoded maken
+            tv.setText("De computer is aan de beurt!");
         }
         else{
             iv.setImageResource(R.drawable.black_cross);
             humanTurn = true;
+            //dit niet hardcoded maken
+            tv.setText("Jij bent aan de beurt!");
         }
     }
 }
