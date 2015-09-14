@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">TicTacToe</string>
 
-    <string name="how_to_play">How to play</string>
+    <string name="how_to_play_title">How to play</string>
+    <string name="how_to_play_text">Hier komt de How To Play tekst</string>
     <string name="OK">@android:string/ok</string>
 
     <string name="hello_splash">Hello splash!</string>
