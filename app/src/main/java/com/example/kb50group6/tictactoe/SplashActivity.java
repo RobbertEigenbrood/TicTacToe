@@ -1,8 +1,11 @@
 package com.example.kb50group6.tictactoe;
 
 import android.content.Intent;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.os.Handler;
@@ -15,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 
@@ -25,7 +29,31 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+        //setContentView(R.layout.activity_splash);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction =
+                fragmentManager.beginTransaction();
+
+        //---Get the current display info---
+        WindowManager wm = getWindowManager();
+        Display display = wm.getDefaultDisplay();
+        /* TODO: getWidth and getHeight are deprecated. Mind that this is the reason why we import "support.v4" */
+        if(display.getWidth() > display.getHeight()){
+            //---Portrait mode---
+            SplashActivityFragment splashActivityFragment = new SplashActivityFragment();
+            // android.R.id.content refers to the content view of the activity
+            fragmentTransaction.replace(
+                    android.R.id.content, splashActivityFragment);
+        }
+        else
+        {
+            //---Landscape mode
+            SplashActivityLandscapeFragment splashActivityLandscapeFragment = new SplashActivityLandscapeFragment();
+            // android.R.id.content refers to the content view of the activity
+            fragmentTransaction.replace(
+                    android.R.id.content, splashActivityLandscapeFragment);
+        }
+        fragmentTransaction.commit();
 
         /* Create a new Runnable() which waits out the Splash Delay and opens up
             the Main Activity */
