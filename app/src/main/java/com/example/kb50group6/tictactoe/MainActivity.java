@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
          */
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this); //this Activity / This Context
-        builder.setMessage(R.string.how_to_play)
+        builder.setMessage(R.string.how_to_play_text)
                 .setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // Empty.
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getBaseContext(), "OK clicked!", Toast.LENGTH_SHORT).show();
                     }
                 })
-        .show();
+                .show();
 
     }
 
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             // Use the Builder class for convenient dialog construction
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setMessage(R.string.how_to_play)
+            builder.setMessage(R.string.how_to_play_text)
                     .setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             // Empty.
