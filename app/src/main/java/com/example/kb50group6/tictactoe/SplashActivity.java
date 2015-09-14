@@ -29,6 +29,8 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        /* Here we set up the proper Fragment according to Portrait or Landscape mode */
         //setContentView(R.layout.activity_splash);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction =
@@ -39,19 +41,18 @@ public class SplashActivity extends AppCompatActivity {
         Display display = wm.getDefaultDisplay();
         /* TODO: getWidth and getHeight are deprecated. Mind that this is the reason why we import "support.v4" */
         if(display.getWidth() > display.getHeight()){
-            //---Portrait mode---
-            SplashActivityFragment splashActivityFragment = new SplashActivityFragment();
-            // android.R.id.content refers to the content view of the activity
-            fragmentTransaction.replace(
-                    android.R.id.content, splashActivityFragment);
-        }
-        else
-        {
             //---Landscape mode
             SplashActivityLandscapeFragment splashActivityLandscapeFragment = new SplashActivityLandscapeFragment();
             // android.R.id.content refers to the content view of the activity
             fragmentTransaction.replace(
                     android.R.id.content, splashActivityLandscapeFragment);
+        }
+        else{
+            //---Portrait mode---
+            SplashActivityFragment splashActivityFragment = new SplashActivityFragment();
+            // android.R.id.content refers to the content view of the activity
+            fragmentTransaction.replace(
+                    android.R.id.content, splashActivityFragment);
         }
         fragmentTransaction.commit();
 
