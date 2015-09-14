@@ -4,9 +4,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 public class GameActivity extends AppCompatActivity {
-
+    private boolean humanTurn = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,5 +37,45 @@ public class GameActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onClick(View v){
+        ImageView iv = (ImageView)v;
+        switch(v.getId()){
+            case R.id.imageView:
+               handleInput(iv);
+                break;
+            case R.id.imageView2:
+                handleInput(iv);
+                break;
+            case R.id.imageView3:
+                handleInput(iv);
+            case R.id.imageView4:
+                handleInput(iv);
+                break;
+            case R.id.imageView5:
+                handleInput(iv);
+                break;
+            case R.id.imageView6:
+                handleInput(iv);
+                break;
+            case R.id.imageView7:
+                handleInput(iv);
+                break;
+            case R.id.imageView8:
+                handleInput(iv);
+                break;
+        }
+    }
+
+    public void handleInput(ImageView iv){
+        if(humanTurn){
+            iv.setImageResource(R.drawable.black_circle);
+            humanTurn = false;
+        }
+        else{
+            iv.setImageResource(R.drawable.black_cross);
+            humanTurn = true;
+        }
     }
 }
