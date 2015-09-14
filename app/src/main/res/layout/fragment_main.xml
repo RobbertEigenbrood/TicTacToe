@@ -5,43 +5,48 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.kb50group6.tictactoe.MainActivityFragment"
-    android:id="@+id/layout_fragment_main">
-
-    <Button
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="@string/play"
-        android:id="@+id/buttonPlay"
-        android:layout_marginTop="82dp"
-        android:onClick="onClickButtonPlay"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/buttonHowToPlay" />
-
-    <Button
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="@string/how_to_play_title"
-        android:id="@+id/buttonHowToPlay"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="onClickButtonHowToPlay"/>
-
-    <Button
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="@string/exit"
-        android:id="@+id/buttonExit"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="82dp"
-        android:onClick="onClickButtonExit" />
+    android:id="@+id/layout_fragment_main"
+    android:background="@drawable/chalkboardbackground">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="PORTRAIT"
         android:id="@+id/textView2"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/buttonPlay" />
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="65dp"
+        android:textColor="@color/white"
+        android:text="@string/play"
+        android:id="@+id/textViewPlay"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="112dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="65dp"
+        android:textColor="@color/white"
+        android:text="@string/settings"
+        android:id="@+id/textViewSettings"
+        android:layout_below="@+id/textViewPlay"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="65dp"
+        android:textColor="@color/white"
+        android:text="@string/exit"
+        android:id="@+id/textViewExit"
+        android:layout_below="@+id/textViewSettings"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
