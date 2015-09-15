@@ -78,50 +78,55 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void onClick(View v){
-        ImageView iv = (ImageView)v;
+        TextView tv = (TextView)v;
         switch(v.getId()){
             case R.id.imageView:
-               handleInput(iv);
+               handleInput(tv);
                 break;
             case R.id.imageView2:
-                handleInput(iv);
+                handleInput(tv);
                 break;
             case R.id.imageView3:
-                handleInput(iv);
+                handleInput(tv);
             case R.id.imageView4:
-                handleInput(iv);
+                handleInput(tv);
                 break;
             case R.id.imageView5:
-                handleInput(iv);
+                handleInput(tv);
                 break;
             case R.id.imageView6:
-                handleInput(iv);
+                handleInput(tv);
                 break;
             case R.id.imageView7:
-                handleInput(iv);
+                handleInput(tv);
                 break;
             case R.id.imageView8:
-                handleInput(iv);
+                handleInput(tv);
                 break;
             case R.id.imageView9:
-                handleInput(iv);
+                handleInput(tv);
                 break;
         }
     }
 
-    public void handleInput(ImageView iv){
-        TextView tv = (TextView) findViewById(R.id.turn_tv);
+    public void handleInput(TextView tv){
+        TextView tv_turn = (TextView) findViewById(R.id.turn_tv);
+        tv.setClickable(false);
         if(humanTurn){
-            iv.setImageResource(R.drawable.black_circle);
+
+            tv.setText("O");
             humanTurn = false;
+
             //dit niet hardcoded maken
-            tv.setText("De computer is aan de beurt!");
+            tv_turn.setText("De computer is aan de beurt!");
         }
         else{
+            tv.setText("X");
             iv.setImageResource(R.drawable.black_cross);
             humanTurn = true;
+
             //dit niet hardcoded maken
-            tv.setText("Jij bent aan de beurt!");
+            tv_turn.setText("Jij bent aan de beurt!");
         }
     }
 }
