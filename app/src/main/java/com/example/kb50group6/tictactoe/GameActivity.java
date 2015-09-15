@@ -122,7 +122,6 @@ public class GameActivity extends AppCompatActivity {
         }
         else{
             tv.setText("X");
-            iv.setImageResource(R.drawable.black_cross);
             humanTurn = true;
 
             //dit niet hardcoded maken
