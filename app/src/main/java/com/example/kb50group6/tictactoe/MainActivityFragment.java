@@ -20,7 +20,7 @@ public class MainActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-
+/*
         TextView textViewPlay = (TextView) rootView.findViewById(R.id.textViewPlay);
         TextView textViewSettings = (TextView) rootView.findViewById(R.id.textViewSettings);
         TextView textViewExit = (TextView) rootView.findViewById(R.id.textViewExit);
@@ -28,6 +28,7 @@ public class MainActivityFragment extends Fragment {
         textViewPlay.setTypeface(font);
         textViewSettings.setTypeface(font);
         textViewExit.setTypeface(font);
+*/
 
         return rootView;
     }

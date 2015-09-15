@@ -29,6 +29,8 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Replace the default font with our own chalk font
+        ReplaceFont.overrideFont(getApplicationContext(), "SERIF", "tangledupinyou.ttf");
 
         /* Here we set up the proper Fragment according to Portrait or Landscape mode */
         //setContentView(R.layout.activity_splash);
@@ -55,6 +57,8 @@ public class SplashActivity extends AppCompatActivity {
                     android.R.id.content, splashActivityFragment);
         }
         fragmentTransaction.commit();
+
+
 
         /* Create a new Runnable() which waits out the Splash Delay and opens up
             the Main Activity */

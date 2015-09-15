@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                     android.R.id.content, mainActivityFragment);
         }
         fragmentTransaction.commit();
+
     }
 
     @Override
