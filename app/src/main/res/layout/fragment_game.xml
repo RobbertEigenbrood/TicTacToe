@@ -17,7 +17,7 @@
         android:textColor="@color/white"
         android:layout_x="35dp"
         android:layout_y="160dp"
-        android:text="X"
+        android:text=""
         android:textSize="100dp"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 
@@ -30,7 +30,7 @@
         android:layout_gravity="center_vertical"
         android:layout_x="134dp"
         android:layout_y="160dp"
-        android:text="X"
+        android:text=""
         android:textSize="100dp"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 
@@ -42,7 +42,7 @@
         android:textColor="@color/white"
         android:layout_x="234dp"
         android:layout_y="160dp"
-        android:text="X"
+        android:text=""
         android:textSize="100dp"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 
@@ -54,7 +54,7 @@
         android:textColor="@color/white"
         android:layout_x="35dp"
         android:layout_y="259dp"
-        android:text="X"
+        android:text=""
         android:textSize="100dp"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 
@@ -66,7 +66,7 @@
         android:onClick="onClick"
         android:layout_x="134dp"
         android:layout_y="259dp"
-        android:text="X"
+        android:text=""
         android:textSize="100dp"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 
@@ -78,7 +78,7 @@
         android:textColor="@color/white"
         android:layout_x="234dp"
         android:layout_y="259dp"
-        android:text="X"
+        android:text=""
         android:textIsSelectable="false"
         android:textSize="100dp"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
@@ -91,7 +91,7 @@
         android:textColor="@color/white"
         android:layout_x="35dp"
         android:layout_y="360dp"
-        android:text="X"
+        android:text=""
         android:textSize="100dp"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 
@@ -103,7 +103,7 @@
         android:textColor="@color/white"
         android:layout_x="134dp"
         android:layout_y="360dp"
-        android:text="X"
+        android:text=""
         android:textSize="100dp"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 
@@ -115,7 +115,7 @@
         android:textColor="@color/white"
         android:layout_x="234dp"
         android:layout_y="360dp"
-        android:text="X"
+        android:text=""
         android:textSize="100dp"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 
