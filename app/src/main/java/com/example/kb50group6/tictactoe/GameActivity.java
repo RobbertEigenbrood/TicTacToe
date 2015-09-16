@@ -77,15 +77,10 @@ public class GameActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //TODO: don't these case-statements all do exactly the same?
     public void onClick(View v){
-        //Sooooo...why don't we just do this?
-        handleInput((TextView)v);
-
-        //Instead of this:
-        /*
         TextView tv = (TextView)v;
-        switch(v.getId()){
+        handleInput(tv);
+        /*switch(v.getId()){
             case R.id.textView:
                handleInput(tv);
                 break;
@@ -112,32 +107,22 @@ public class GameActivity extends AppCompatActivity {
             case R.id.textView9:
                 handleInput(tv);
                 break;
-        } */
+        }*/
     }
 
     public void handleInput(TextView tv){
         TextView tv_turn = (TextView) findViewById(R.id.turn_tv);
-
-        //If we turn off the clickable (which is good)...
         tv.setClickable(false);
         if(humanTurn){
 
             tv.setText("O");
             humanTurn = false;
-
-            //dit niet hardcoded maken DONE
             tv_turn.setText(R.string.computers_turn);
-            //tv_turn.setText("De computer is aan de beurt!");
         }
         else{
             tv.setText("X");
             humanTurn = true;
-
-            //dit niet hardcoded maken DONE
             tv_turn.setText(R.string.your_turn);
-            //tv_turn.setText("Jij bent aan de beurt!");
         }
-        //...we have to turn it back on again
-        tv.setClickable(true);
     }
 }
