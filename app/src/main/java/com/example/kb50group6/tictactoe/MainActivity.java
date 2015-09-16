@@ -2,6 +2,8 @@ package com.example.kb50group6.tictactoe;
 
 import android.app.Dialog;
 //import android.app.FragmentManager;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
 //import android.app.FragmentTransaction;
 import android.support.v4.app.FragmentTransaction;
@@ -16,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -84,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickButtonSettings(View view){
 
-        /* Create a dynamic AlertDialog instead of instantiating an entire class */
+        /* Create a dynamic AlertDialog instead of instantiating an entire class
         AlertDialog.Builder builder = new AlertDialog.Builder(this); //this Activity / This Context
         builder.setTitle(R.string.how_to_play_title)
                 .setMessage(R.string.how_to_play_text)
@@ -95,6 +98,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                 })
                 .show();
+        */
+        Intent i = new Intent(this,SettingsActivity.class);
+        startActivity(i);
+
+
 
     }
 

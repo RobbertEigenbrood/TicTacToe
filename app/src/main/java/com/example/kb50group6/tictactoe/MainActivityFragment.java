@@ -1,6 +1,8 @@
 package com.example.kb50group6.tictactoe;
 
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -28,7 +30,13 @@ public class MainActivityFragment extends Fragment {
         textViewPlay.setTypeface(font);
         textViewSettings.setTypeface(font);
         textViewExit.setTypeface(font);
+
+
 */
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(rootView.getContext());
+        String syncConnPref = sharedPref.getString("playername", "");
+        TextView playerTextview = (TextView)rootView.findViewById(R.id.playernameTextview);
+        playerTextview.setText(syncConnPref);
 
         return rootView;
     }

@@ -41,4 +41,26 @@
         android:layout_centerHorizontal="true"
         android:onClick="onClickButtonExit"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome"
+        android:textSize="32dp"
+        android:textColor="@color/white"
+        android:id="@+id/textView16"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="43dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:textSize="32dp"
+        android:textColor="@color/white"
+        android:id="@+id/playernameTextview"
+        android:layout_alignTop="@+id/textView16"
+        android:layout_toEndOf="@+id/textView16" />
+
 </RelativeLayout>

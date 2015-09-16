@@ -8,6 +8,7 @@ import java.lang.reflect.Field;
 
 /**
  * Created by Robbert on 15-9-2015.
+ * Found fix on https://gist.github.com/artem-zinnatullin/7749076
  */
 public class ReplaceFont {
 
