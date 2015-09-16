@@ -46,6 +46,8 @@ public class GameActivity extends AppCompatActivity {
         }
         fragmentTransaction.commit();
 
+        //Replace the default font with our own chalk font
+        ReplaceFont.overrideFont(getApplicationContext(), "SERIF", "tangledupinyou.ttf");
 
     }
 

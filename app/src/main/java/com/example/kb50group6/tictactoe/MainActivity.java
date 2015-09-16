@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         //setContentView(R.layout.activity_main);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction =
@@ -48,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
                     android.R.id.content, mainActivityFragment);
         }
         fragmentTransaction.commit();
+
+        //Replace the default font with our own chalk font
+        ReplaceFont.overrideFont(getApplicationContext(), "SERIF", "tangledupinyou.ttf");
 
     }
 
