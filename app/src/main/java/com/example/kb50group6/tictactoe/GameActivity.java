@@ -80,34 +80,7 @@ public class GameActivity extends AppCompatActivity {
     public void onClick(View v){
         TextView tv = (TextView)v;
         handleInput(tv);
-        /*switch(v.getId()){
-            case R.id.textView:
-               handleInput(tv);
-                break;
-            case R.id.textView2:
-                handleInput(tv);
-                break;
-            case R.id.textView3:
-                handleInput(tv);
-            case R.id.textView4:
-                handleInput(tv);
-                break;
-            case R.id.textView5:
-                handleInput(tv);
-                break;
-            case R.id.textView6:
-                handleInput(tv);
-                break;
-            case R.id.textView7:
-                handleInput(tv);
-                break;
-            case R.id.textView8:
-                handleInput(tv);
-                break;
-            case R.id.textView9:
-                handleInput(tv);
-                break;
-        }*/
+
     }
 
     public void handleInput(TextView tv){
