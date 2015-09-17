@@ -18,53 +18,59 @@ import java.util.ArrayList;
 public class GameActivity extends AppCompatActivity {
     private boolean humanTurn = true;
 
+    public ArrayList<TextView> tvlist = new ArrayList<TextView>();
+    TextView[][] textViewArray = new TextView[3][3];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_game);
-
-
-        //TODO: here we need to implement a (Bundle) savedInstanceState
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction =
-                fragmentManager.beginTransaction();
-
-        //---Get the current display info---
-        WindowManager wm = getWindowManager();
-        Display display = wm.getDefaultDisplay();
-        /* TODO: getWidth and getHeight are deprecated. Mind that this is the reason why we import "support.v4" */
-        if(display.getWidth() > display.getHeight()){
-            //---Portrait mode---
-            GameActivityLandscapeFragment gameActivityLandscapeFragment = new GameActivityLandscapeFragment();
-            // android.R.id.content refers to the content view of the activity
-            fragmentTransaction.replace(
-                    android.R.id.content, gameActivityLandscapeFragment);
-        }
-        else
-        {
-            //---Landscape mode
-            GameActivityFragment gameActivityFragment = new GameActivityFragment();
-            // android.R.id.content refers to the content view of the activity
-            fragmentTransaction.replace(
-                    android.R.id.content, gameActivityFragment);
-        }
-        fragmentTransaction.commit();
+        setContentView(R.layout.activity_game);
 
         //Replace the default font with our own chalk font
         ReplaceFont.overrideFont(getApplicationContext(), "SERIF", "tangledupinyou.ttf");
 
+        fillList();
+        Toast.makeText(this,"List Filled",Toast.LENGTH_SHORT).show();
+    }
+
+    public void onClick(View v){
+        TextView textView = (TextView)v;
+        handleTurns(textView);
+    }
+
+
+    public void handleTurns(TextView tv){
+        playerPressed(tv);
+        checkForWin();
+        computerTurn();
+        checkForWin();
+    }
+
+
+    public void playerPressed(TextView tv){
+        tv.setText("x");
+        tv.setClickable(false);
+        tvlist.remove(tv);
+
 
     }
 
 
-
-
-    @Override
-    public void onPause() {
-        super.onPause();  // Always call the superclass method first
-        //TODO: save data here when user turns the screen. Maybe implement onStop() as well(?)
+    public void computerTurn(){
+        if(tvlist.size()!=0) {
+            int rand = (int) Math.floor(Math.random() * tvlist.size());
+            TextView textView = tvlist.get(rand);
+            textView.setText("0");
+            textView.setClickable(false);
+            tvlist.remove(rand);
+        }
     }
+
+    private void checkForWin()
+    {
+        Toast.makeText(this,"I DONT CARE",Toast.LENGTH_SHORT).show();
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -88,11 +94,51 @@ public class GameActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onClick(View v){
-        TextView tv = (TextView)v;
-        GameActivityFragment.playerPressed(tv);
+    private void fillList()
+    {
+
+        TextView tv1 = (TextView)findViewById(R.id.textView);
+        TextView tv2 = (TextView)findViewById(R.id.textView2);
+        TextView tv3 = (TextView)findViewById(R.id.textView3);
+        TextView tv4 = (TextView)findViewById(R.id.textView4);
+        TextView tv5 = (TextView)findViewById(R.id.textView5);
+        TextView tv6 = (TextView)findViewById(R.id.textView6);
+        TextView tv7 = (TextView)findViewById(R.id.textView7);
+        TextView tv8 = (TextView)findViewById(R.id.textView8);
+        TextView tv9 = (TextView)findViewById(R.id.textView9);
+
+        tvlist.add(tv1);
+        tvlist.add(tv2);
+        tvlist.add(tv3);
+        tvlist.add(tv4);
+        tvlist.add(tv5);
+        tvlist.add(tv6);
+        tvlist.add(tv7);
+        tvlist.add(tv8);
+        tvlist.add(tv9);
+
+            int tvi=0;
+            for(int x=0; x< 3 ; x++)
+            {
+                for(int i = 0;i<3;i++)
+                {
+                    textViewArray[x][i]=tvlist.get(tvi);
+                    tvi++;
+                }
+            }
+
+        }
+
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+        Toast.makeText(this,"Pauze",Toast.LENGTH_SHORT).show();
+
     }
-
-
 }
+
+
+
+
 
