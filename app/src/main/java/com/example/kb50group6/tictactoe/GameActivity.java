@@ -13,13 +13,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class GameActivity extends AppCompatActivity {
     private boolean humanTurn = true;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_game);
+
+
         //TODO: here we need to implement a (Bundle) savedInstanceState
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction =
@@ -49,7 +54,11 @@ public class GameActivity extends AppCompatActivity {
         //Replace the default font with our own chalk font
         ReplaceFont.overrideFont(getApplicationContext(), "SERIF", "tangledupinyou.ttf");
 
+
     }
+
+
+
 
     @Override
     public void onPause() {
@@ -81,23 +90,9 @@ public class GameActivity extends AppCompatActivity {
 
     public void onClick(View v){
         TextView tv = (TextView)v;
-        handleInput(tv);
-
+        GameActivityFragment.playerPressed(tv);
     }
 
-    public void handleInput(TextView tv){
-        TextView tv_turn = (TextView) findViewById(R.id.turn_tv);
-        tv.setClickable(false);
-        if(humanTurn){
 
-            tv.setText("O");
-            humanTurn = false;
-            tv_turn.setText(R.string.computers_turn);
-        }
-        else{
-            tv.setText("X");
-            humanTurn = true;
-            tv_turn.setText(R.string.your_turn);
-        }
-    }
 }
+
