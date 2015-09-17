@@ -3,7 +3,9 @@ package com.example.kb50group6.tictactoe;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -18,12 +20,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Timer;
 
 public class GameActivity extends AppCompatActivity {
     private boolean humanTurn = true;
 
     public ArrayList<TextView> tvlist = new ArrayList<TextView>();
     TextView[][] textViewArray = new TextView[3][3];
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,31 +56,48 @@ public class GameActivity extends AppCompatActivity {
     }
 
 
-    public void handleTurns(TextView tv){
+    public void handleTurns(TextView tv) {
         playerPressed(tv);
-        /* Prevents showing a dialog twice when game is finished */
-        if( checkForWin() ) {
-            computerTurn();
-            for(int x = 1; x <= tvlist.size(); x++){
-                // Someone won, so we are not allowed to click the buttons anymore (or both could still win)
-                tvlist.get(x-1).setClickable(false);
-            }
-        }
-        else {
-            computerTurn();
-            if (checkForWin()) {
-                for (int x = 1; x <= tvlist.size(); x++) {
-                    // Someone won, so we are not allowed to click the buttons anymore (or both could still win)
-                    tvlist.get(x - 1).setClickable(false);
+
+
+        // Execute some code after a delay
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                makeToast();
+                 /* Prevents showing a dialog twice when game is finished */
+                if (checkForWin()) {
+                    computerTurn();
+                    for (int x = 1; x <= tvlist.size(); x++) {
+                        // Someone won, so we are not allowed to click the buttons anymore (or both could still win)
+                        tvlist.get(x - 1).setClickable(false);
+                    }
+                } else {
+                    computerTurn();
+                    if (checkForWin()) {
+                        for (int x = 1; x <= tvlist.size(); x++) {
+                            // Someone won, so we are not allowed to click the buttons anymore (or both could still win)
+                            tvlist.get(x - 1).setClickable(false);
+                        }
+                    }
                 }
             }
-        }
+        }, 3000);
+
+
+
+    }
+
+    public void makeToast(){
+        Toast.makeText(this,"Computer heeft gezet",Toast.LENGTH_SHORT).show();
     }
 
     public void playerPressed(TextView tv){
         tv.setText("x");
         tv.setClickable(false);
         tvlist.remove(tv);
+        TextView tv_turn = (TextView)findViewById(R.id.turn_tv);
+        tv_turn.setText(R.string.computers_turn);
     }
 
     public void computerTurn(){
@@ -82,7 +106,9 @@ public class GameActivity extends AppCompatActivity {
             TextView textView = tvlist.get(rand);
             textView.setText("0");
             textView.setClickable(false);
-            tvlist.remove(rand);
+            tvlist.remove(rand);TextView tv_turn = (TextView)findViewById(R.id.turn_tv);
+            tv_turn.setText(R.string.your_turn);
+
         }
     }
 
@@ -246,6 +272,13 @@ public class GameActivity extends AppCompatActivity {
             }
 
         }
+
+    public void onClickReset(View v){
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+    }
+
 
     @Override
     public void onPause()

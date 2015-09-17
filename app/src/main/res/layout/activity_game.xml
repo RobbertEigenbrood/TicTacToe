@@ -185,4 +185,15 @@
         </TableRow>
     </TableLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:onClick="onClickReset"
+        android:id="@+id/textView20"
+        android:layout_alignBottom="@+id/turn_tv"
+        android:layout_alignEnd="@+id/turn_tv" />
+
 </RelativeLayout>
