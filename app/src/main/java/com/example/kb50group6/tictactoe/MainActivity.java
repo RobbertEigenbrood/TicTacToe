@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //getActionBar().setIcon(R.drawable.tictactoe_logo);
 
         //setContentView(R.layout.activity_main);
         FragmentManager fragmentManager = getSupportFragmentManager();

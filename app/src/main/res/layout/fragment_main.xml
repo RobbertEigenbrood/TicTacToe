@@ -61,6 +61,6 @@
         android:textColor="@color/white"
         android:id="@+id/playernameTextview"
         android:layout_alignTop="@+id/textView16"
-        android:layout_toEndOf="@+id/textView16" />
+        android:layout_alignEnd="@+id/textViewExit" />
 
 </RelativeLayout>

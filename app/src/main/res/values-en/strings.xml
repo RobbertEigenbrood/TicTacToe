@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TicTacToe</string>
+    <string name="app_name">Tic Tac Toe</string>
 
     <string name="how_to_play_title">How to play</string>
     <string name="how_to_play_text">Hier komt de How To Play tekst</string>
@@ -19,6 +19,6 @@
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="your_turn">It\'s your turn! Yay!</string>
     <string name="computers_turn">It\'s the computer\'s turn.</string>
-    <string name="welcomeText">Welcome </string>
+    <string name="welcomeText">Welcome</string>
 
 </resources>

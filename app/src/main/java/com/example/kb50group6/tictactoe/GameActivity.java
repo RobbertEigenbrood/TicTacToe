@@ -1,5 +1,8 @@
 package com.example.kb50group6.tictactoe;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -31,7 +34,7 @@ public class GameActivity extends AppCompatActivity {
         ReplaceFont.overrideFont(getApplicationContext(), "SERIF", "tangledupinyou.ttf");
 
         fillList();
-        Toast.makeText(this,"List Filled",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"List Filled",Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -48,20 +51,30 @@ public class GameActivity extends AppCompatActivity {
 
     public void handleTurns(TextView tv){
         playerPressed(tv);
-        checkForWin();
-        computerTurn();
-        checkForWin();
+        /* Prevents showing a dialog twice when game is finished */
+        if( checkForWin() ) {
+            computerTurn();
+            for(int x = 1; x <= tvlist.size(); x++){
+                // Someone won, so we are not allowed to click the buttons anymore (or both could still win)
+                tvlist.get(x-1).setClickable(false);
+            }
+        }
+        else {
+            computerTurn();
+            if (checkForWin()) {
+                for (int x = 1; x <= tvlist.size(); x++) {
+                    // Someone won, so we are not allowed to click the buttons anymore (or both could still win)
+                    tvlist.get(x - 1).setClickable(false);
+                }
+            }
+        }
     }
-
 
     public void playerPressed(TextView tv){
         tv.setText("x");
         tv.setClickable(false);
         tvlist.remove(tv);
-
-
     }
-
 
     public void computerTurn(){
         if(tvlist.size()!=0) {
@@ -73,9 +86,107 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    private void checkForWin()
+    private boolean checkForWin()
     {
-        Toast.makeText(this,"I DONT CARE",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"I DONT CARE",Toast.LENGTH_SHORT).show();
+
+        String who_won = "No one ";
+
+        /* Dit kan geheid een stuk korter maar "for the sake of simplicity": */
+        TextView tv1 = (TextView)findViewById(R.id.textView);
+        TextView tv2 = (TextView)findViewById(R.id.textView2);
+        TextView tv3 = (TextView)findViewById(R.id.textView3);
+        TextView tv4 = (TextView)findViewById(R.id.textView4);
+        TextView tv5 = (TextView)findViewById(R.id.textView5);
+        TextView tv6 = (TextView)findViewById(R.id.textView6);
+        TextView tv7 = (TextView)findViewById(R.id.textView7);
+        TextView tv8 = (TextView)findViewById(R.id.textView8);
+        TextView tv9 = (TextView)findViewById(R.id.textView9);
+
+        /* Start to check the rows... */
+        //Row 1
+        if( tv1.getText() == tv2.getText() && tv2.getText() == tv3.getText() ){
+            who_won = tv1.getText().toString();
+        }
+        //Row 2
+        if( tv4.getText() == tv5.getText() && tv5.getText() == tv6.getText() ){
+            who_won = tv4.getText().toString();
+        }
+        //Row 3
+        if(tv7.getText() == tv8.getText() && tv8.getText() == tv9.getText()){
+            who_won = tv7.getText().toString();
+        }
+
+        /* ...then the columns... */
+        //Row 1
+        if( tv1.getText() == tv4.getText() && tv4.getText() == tv7.getText() ){
+            who_won = tv1.getText().toString();
+        }
+        //Row 2
+        if( tv2.getText() == tv5.getText() && tv5.getText() == tv8.getText() ){
+            who_won = tv2.getText().toString();
+        }
+        //Row 3
+        if(tv3.getText() == tv6.getText() && tv6.getText() == tv9.getText()){
+            who_won = tv3.getText().toString();
+        }
+
+        /* ...and finally crosswise. */
+        //Upper left to down right
+        if( tv1.getText() == tv5.getText() && tv5.getText() == tv9.getText() ){
+            who_won = tv1.getText().toString();
+        }
+        //Down left to upper right
+        if( tv7.getText() == tv5.getText() && tv5.getText() == tv3.getText() ){
+            who_won = tv7.getText().toString();
+        }
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this); //this Activity / This Context
+
+        if(who_won == "x" || who_won == "X"){
+            Toast.makeText(this, "You won!", Toast.LENGTH_LONG).show();
+            builder.setTitle("Hooray!")
+                    .setMessage("You won.")
+                    .setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // Empty.
+                            // Here we decide what happens when the user clicks "Ok"
+                        }
+                    })
+                    .show();
+            return true;
+        }
+        else if(who_won == "o" || who_won == "O" || who_won == "0"){
+            Toast.makeText(this, "Haha you lost!", Toast.LENGTH_LONG).show();
+            builder.setTitle("Potverdorie")
+                    .setMessage("You lost :(")
+                    .setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // Empty.
+                            // Here we decide what happens when the user clicks "Ok"
+                        }
+                    })
+                    .show();
+            return true;
+        }
+        else{
+            if(tvlist.size() == 0){
+                Toast.makeText(this, "Tie game", Toast.LENGTH_LONG).show();
+                builder.setTitle("It's a tie.")
+                        .setMessage("Damn you suck :/")
+                        .setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // Empty.
+                                // Here we decide what happens when the user clicks "Ok"
+                            }
+                        })
+                        .show();
+                return true;
+            }
+            //Empty
+        }
+        return false;
+
     }
 
 
@@ -140,7 +251,7 @@ public class GameActivity extends AppCompatActivity {
     public void onPause()
     {
         super.onPause();
-        Toast.makeText(this,"Pauze",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"Pauze",Toast.LENGTH_SHORT).show();
 
     }
 }
