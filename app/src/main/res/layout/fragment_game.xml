@@ -11,15 +11,14 @@
 
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:text="@string/your_turn"
+        android:gravity="center"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/turn_tv"
-        android:layout_x="71dp"
-        android:layout_y="83dp"
         android:layout_above="@+id/tableLayout"
         android:layout_centerHorizontal="true" />
 
@@ -34,9 +33,7 @@
         android:stretchColumns="*">
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_x="82dp"
-            android:layout_y="162dp">
+            android:layout_height="match_parent">
 
             <TextView
                 android:layout_width="fill_parent"
@@ -44,10 +41,9 @@
                 android:gravity="center"
                 android:id="@+id/textView"
                 android:onClick="onClick"
+                android:textSize="100sp"
+                android:text=""
                 android:textColor="@color/white"
-                android:layout_x="53dp"
-                android:layout_y="177dp"
-                android:textSize="100dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:background="@drawable/back" />
 
@@ -60,10 +56,8 @@
                 android:onClick="onClick"
                 android:textColor="@color/white"
                 android:layout_gravity="center_vertical"
-                android:layout_x="134dp"
-                android:layout_y="160dp"
+                android:textSize="100sp"
                 android:text=""
-                android:textSize="100dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:background="@drawable/back"/>
 
@@ -74,19 +68,15 @@
                 android:id="@+id/textView3"
                 android:onClick="onClick"
                 android:textColor="@color/white"
-                android:layout_x="234dp"
-                android:layout_y="160dp"
+                android:textSize="100sp"
                 android:text=""
-                android:textSize="100dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:background="@drawable/back"/>
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_x="-31dp"
-            android:layout_y="256dp">
+            android:layout_height="match_parent">
 
             <TextView
                 android:layout_width="fill_parent"
@@ -95,10 +85,8 @@
                 android:id="@+id/textView4"
                 android:onClick="onClick"
                 android:textColor="@color/white"
-                android:layout_x="35dp"
-                android:layout_y="259dp"
+                android:textSize="100sp"
                 android:text=""
-                android:textSize="100dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:background="@drawable/back"/>
 
@@ -109,10 +97,8 @@
                 android:id="@+id/textView5"
                 android:textColor="@color/white"
                 android:onClick="onClick"
-                android:layout_x="125dp"
-                android:layout_y="259dp"
+                android:textSize="100sp"
                 android:text=""
-                android:textSize="100dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:background="@drawable/back"/>
 
@@ -123,20 +109,15 @@
                 android:id="@+id/textView6"
                 android:onClick="onClick"
                 android:textColor="@color/white"
-                android:layout_x="225dp"
-                android:layout_y="259dp"
+                android:textSize="100sp"
                 android:text=""
-                android:textIsSelectable="false"
-                android:textSize="100dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:background="@drawable/back"/>
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_x="41dp"
-            android:layout_y="124dp">
+            android:layout_height="match_parent">
 
         <TextView
             android:layout_width="fill_parent"
@@ -145,10 +126,8 @@
             android:id="@+id/textView7"
             android:onClick="onClick"
             android:textColor="@color/white"
-            android:layout_x="35dp"
-            android:layout_y="360dp"
+            android:textSize="100sp"
             android:text=""
-            android:textSize="100dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:background="@drawable/back"/>
 
@@ -159,10 +138,8 @@
             android:id="@+id/textView8"
             android:onClick="onClick"
             android:textColor="@color/white"
-            android:layout_x="125dp"
-            android:layout_y="360dp"
+            android:textSize="100sp"
             android:text=""
-            android:textSize="100dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:background="@drawable/back"/>
 
@@ -173,10 +150,8 @@
             android:id="@+id/textView9"
             android:onClick="onClick"
             android:textColor="@color/white"
-            android:layout_x="234dp"
-            android:layout_y="360dp"
+            android:textSize="100sp"
             android:text=""
-            android:textSize="100dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:background="@drawable/back"/>
         </TableRow>

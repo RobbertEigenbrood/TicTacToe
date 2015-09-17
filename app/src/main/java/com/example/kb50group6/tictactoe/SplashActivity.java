@@ -57,7 +57,7 @@ public class SplashActivity extends AppCompatActivity {
         fragmentTransaction.commit();
 
         //Replace the default font with our own chalk font
-        ReplaceFont.overrideFont(getApplicationContext(), "SERIF", "tangledupinyou.ttf");
+        ReplaceFont.overrideFont(getApplicationContext(), "DEFAULT", "tangledupinyou.ttf");
 
         /* Create a new Runnable() which waits out the Splash Delay and opens up
             the Main Activity */
