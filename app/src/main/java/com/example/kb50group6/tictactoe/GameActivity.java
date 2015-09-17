@@ -1,5 +1,6 @@
 package com.example.kb50group6.tictactoe;
 
+import android.content.res.Configuration;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -31,6 +32,12 @@ public class GameActivity extends AppCompatActivity {
 
         fillList();
         Toast.makeText(this,"List Filled",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
     }
 
     public void onClick(View v){
