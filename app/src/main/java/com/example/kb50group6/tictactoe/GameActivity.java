@@ -26,7 +26,8 @@ import java.util.Timer;
 
 public class GameActivity extends AppCompatActivity{
 
-    private boolean humanTurn = true;
+    /* We need computerTurn to let the computer finish its turn when the screen is rotated */
+    private boolean humanTurn = true, computerTurn = false;
 
     public ArrayList<TextView> tvlist = new ArrayList<TextView>();
     TextView[][] textViewArray = new TextView[3][3];
@@ -39,8 +40,8 @@ public class GameActivity extends AppCompatActivity{
         //Replace the default font with our own chalk font
         ReplaceFont.overrideFont(getApplicationContext(), "SERIF", "tangledupinyou.ttf");
 
+        /* Fill our ArrayList of TextViews */
         fillList();
-        //Toast.makeText(this, "onCreate..",Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -50,6 +51,9 @@ public class GameActivity extends AppCompatActivity{
     }
 
     public void onClick(View v){
+        if (computerTurn){
+            return;
+        }
         TextView textView = (TextView)v;
         handleTurns(textView);
     }
@@ -70,15 +74,17 @@ public class GameActivity extends AppCompatActivity{
             for (int x = 1; x <= tvlist.size(); x++) {
                 tvlist.get(x - 1).setClickable(false);
             }
-               handler.postDelayed(new Runnable() {
-                   public void run() {
-                       computerTurn();
-                       //Turn on clickables
-                       for (int x = 1; x <= tvlist.size(); x++) {
-                           tvlist.get(x - 1).setClickable(true);
-                       }
+            computerTurn = true;
+           handler.postDelayed(new Runnable() {
+               public void run() {
+                   computerTurn();
+                   computerTurn = false;
+                   //Turn on clickables
+                   for (int x = 1; x <= tvlist.size(); x++) {
+                       tvlist.get(x - 1).setClickable(true);
                    }
-               },random);
+               }
+           },random);
             for (int x = 1; x <= tvlist.size(); x++) {
                 // Someone won, so we are not allowed to click the buttons anymore (or both could still win)
                 tvlist.get(x - 1).setClickable(false);
@@ -89,9 +95,11 @@ public class GameActivity extends AppCompatActivity{
             for (int x = 1; x <= tvlist.size(); x++) {
                 tvlist.get(x - 1).setClickable(false);
             }
+            computerTurn = true;
             handler.postDelayed(new Runnable() {
                 public void run() {
                     computerTurn();
+                    computerTurn = false;
                     //Turn on clickables
                     for (int x = 1; x <= tvlist.size(); x++) {
                         tvlist.get(x - 1).setClickable(true);
@@ -134,8 +142,6 @@ public class GameActivity extends AppCompatActivity{
 
     private boolean checkForWin()
     {
-        //Toast.makeText(this,"I DONT CARE",Toast.LENGTH_SHORT).show();
-
         String who_won = "No one ";
 
         /* Dit kan geheid een stuk korter maar "for the sake of simplicity": */
@@ -233,10 +239,8 @@ public class GameActivity extends AppCompatActivity{
                         .show();
                 return true;
             }
-            //Empty
         }
         return false;
-
     }
 
 
@@ -303,7 +307,6 @@ public class GameActivity extends AppCompatActivity{
         startActivity(intent);
     }
 
-
     @Override
     public void onPause()
     {
@@ -329,6 +332,7 @@ public class GameActivity extends AppCompatActivity{
         TextView tv9 = (TextView)findViewById(R.id.textView9); savedStrings[8] = tv9.getText().toString();
 
         outState.putStringArray("savedStrings", savedStrings);
+        outState.putBoolean("computerTurn", computerTurn);
 
     }
 
@@ -337,6 +341,10 @@ public class GameActivity extends AppCompatActivity{
         super.onRestoreInstanceState(inState);
 
         String[] savedStrings = inState.getStringArray("savedStrings");
+
+        for(TextView tv : tvlist){
+            tv.setClickable(false);
+        }
 
         TextView tv1 = (TextView)findViewById(R.id.textView);  tv1.setText(savedStrings[0]); if(!tv1.getText().toString().equals("")){tvlist.remove(tv1);}
         TextView tv2 = (TextView)findViewById(R.id.textView2); tv2.setText(savedStrings[1]); if(!tv2.getText().toString().equals("")){tvlist.remove(tv2);}
@@ -348,15 +356,26 @@ public class GameActivity extends AppCompatActivity{
         TextView tv8 = (TextView)findViewById(R.id.textView8); tv8.setText(savedStrings[7]); if(!tv8.getText().toString().equals("")){tvlist.remove(tv8);}
         TextView tv9 = (TextView)findViewById(R.id.textView9); tv9.setText(savedStrings[8]); if(!tv9.getText().toString().equals("")){tvlist.remove(tv9);}
 
-        //Toast.makeText(this, "Restoreinstancestate.",Toast.LENGTH_LONG).show();
+        for(TextView tv : tvlist){
+            tv.setClickable(true);
+        }
 
-        /*
-        for(int i = 0;i<savedStrings.length;i++) {
-            if (savedStrings[i].contains("XOox0")) {
-                //Toast.makeText(this, "savedStrings contains " + savedStrings[i].toString(), Toast.LENGTH_SHORT).show();
-                tvlist.remove(i);
-            }
-        } */
+        computerTurn = inState.getBoolean("computerTurn");
+
+        if(computerTurn){
+        /* Resume the turn of the computer when the screen is rotated */
+            int random = (int) Math.floor(Math.random() * 4000) + 1000;
+
+            Handler handler = new Handler();
+
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        computerTurn();
+                        checkForWin();
+                        computerTurn = false;
+                    }
+                }, random);
+        }
 
     }
 

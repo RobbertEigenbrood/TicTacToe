@@ -4,5 +4,6 @@
         android:title="@string/settingsPlayerBox"
         android:key="playername"
         android:summary=""
-        android:defaultValue="@string/defaultplayername"/>
+        android:defaultValue="@string/defaultplayername"
+        android:maxLength="12"/>
 </PreferenceScreen>
