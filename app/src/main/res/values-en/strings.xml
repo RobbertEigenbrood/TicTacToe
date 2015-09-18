@@ -20,5 +20,6 @@
     <string name="your_turn">It\'s your turn! Yay!</string>
     <string name="computers_turn">It\'s the computer\'s turn.</string>
     <string name="welcomeText">Welcome</string>
+    <string name="splash_screen">An project group 6 app</string>
 
 </resources>

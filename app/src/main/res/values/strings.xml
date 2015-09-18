@@ -21,5 +21,6 @@
     <string name="your_turn">Het is jouw beurt!</string>
     <string name="computers_turn">De computer is aan de beurt.</string>
     <string name="welcomeText">Welkom</string>
+    <string name="splash_screen">Een project groep 6 app</string>
 
 </resources>
