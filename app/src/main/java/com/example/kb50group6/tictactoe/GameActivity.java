@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AnalogClock;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,15 +24,12 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Timer;
 
-public class GameActivity extends AppCompatActivity {
+public class GameActivity extends AppCompatActivity{
+
     private boolean humanTurn = true;
 
     public ArrayList<TextView> tvlist = new ArrayList<TextView>();
     TextView[][] textViewArray = new TextView[3][3];
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,37 +58,58 @@ public class GameActivity extends AppCompatActivity {
     public void handleTurns(TextView tv) {
         playerPressed(tv);
 
+        /* The computer makes a move in a random time between 0 and 3 seconds */
+        int random = (int) Math.floor(Math.random() * 3000);
 
-        // Execute some code after a delay
         Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                makeToast();
-                 /* Prevents showing a dialog twice when game is finished */
-                if (checkForWin()) {
+
+        /* We check if the game is won to prevent showing a dialog twice when game is finished */
+        if (checkForWin()) {
+            /* Turn off clickables and wait out the random delay in a Runnable() */
+            for (int x = 1; x <= tvlist.size(); x++) {
+                tvlist.get(x - 1).setClickable(false);
+            }
+               handler.postDelayed(new Runnable() {
+                   public void run() {
+                       computerTurn();
+                       //Turn on clickables
+                       for (int x = 1; x <= tvlist.size(); x++) {
+                           tvlist.get(x - 1).setClickable(true);
+                       }
+                   }
+               },random);
+
+            for (int x = 1; x <= tvlist.size(); x++) {
+                // Someone won, so we are not allowed to click the buttons anymore (or both could still win)
+                tvlist.get(x - 1).setClickable(false);
+            }
+        }
+        else {
+            /* Turn off clickables and wait out the random delay in a Runnable() */
+            for (int x = 1; x <= tvlist.size(); x++) {
+                tvlist.get(x - 1).setClickable(false);
+            }
+            handler.postDelayed(new Runnable() {
+                public void run() {
                     computerTurn();
+                    //Turn on clickables
                     for (int x = 1; x <= tvlist.size(); x++) {
-                        // Someone won, so we are not allowed to click the buttons anymore (or both could still win)
-                        tvlist.get(x - 1).setClickable(false);
-                    }
-                } else {
-                    computerTurn();
-                    if (checkForWin()) {
-                        for (int x = 1; x <= tvlist.size(); x++) {
-                            // Someone won, so we are not allowed to click the buttons anymore (or both could still win)
-                            tvlist.get(x - 1).setClickable(false);
-                        }
+                        tvlist.get(x - 1).setClickable(true);
                     }
                 }
+            }, random);
+
+            if (checkForWin()) {
+                for (int x = 1; x <= tvlist.size(); x++) {
+                    // Someone won, so we are not allowed to click the buttons anymore (or both could still win)
+                    tvlist.get(x - 1).setClickable(false);
+                }
             }
-        }, 3000);
-
-
-
+        }
     }
 
     public void makeToast(){
-        Toast.makeText(this,"Computer heeft gezet",Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this,"Computer heeft gezet",Toast.LENGTH_SHORT).show();
     }
 
     public void playerPressed(TextView tv){
@@ -170,7 +190,7 @@ public class GameActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this); //this Activity / This Context
 
         if(who_won == "x" || who_won == "X"){
-            Toast.makeText(this, "You won!", Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, "You won!", Toast.LENGTH_LONG).show();
             builder.setTitle("Hooray!")
                     .setMessage("You won.")
                     .setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
@@ -183,7 +203,7 @@ public class GameActivity extends AppCompatActivity {
             return true;
         }
         else if(who_won == "o" || who_won == "O" || who_won == "0"){
-            Toast.makeText(this, "Haha you lost!", Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, "Haha you lost!", Toast.LENGTH_LONG).show();
             builder.setTitle("Potverdorie")
                     .setMessage("You lost :(")
                     .setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
@@ -197,7 +217,7 @@ public class GameActivity extends AppCompatActivity {
         }
         else{
             if(tvlist.size() == 0){
-                Toast.makeText(this, "Tie game", Toast.LENGTH_LONG).show();
+                //Toast.makeText(this, "Tie game", Toast.LENGTH_LONG).show();
                 builder.setTitle("It's a tie.")
                         .setMessage("Damn you suck :/")
                         .setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {

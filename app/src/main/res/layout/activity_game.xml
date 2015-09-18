@@ -8,8 +8,6 @@
     android:id="@+id/naampje"
     android:background="@drawable/chalkboardbackground">
 
-
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,7 +37,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_x="82dp"
-            android:layout_y="162dp">
+            android:layout_y="162dp"
+            android:id="@+id/tableRow">
 
             <TextView
                 android:layout_width="fill_parent"
@@ -65,7 +64,6 @@
                 android:layout_gravity="center_vertical"
                 android:layout_x="134dp"
                 android:layout_y="160dp"
-                android:text=""
                 android:textSize="100dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:background="@drawable/back"/>
@@ -89,7 +87,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_x="-31dp"
-            android:layout_y="256dp">
+            android:layout_y="256dp"
+            android:id="@+id/tableRow2">
 
             <TextView
                 android:layout_width="fill_parent"
@@ -139,7 +138,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_x="41dp"
-            android:layout_y="124dp">
+            android:layout_y="124dp"
+            android:id="@+id/tableRow3">
 
             <TextView
                 android:layout_width="fill_parent"
