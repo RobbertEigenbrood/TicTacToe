@@ -43,79 +43,79 @@
         android:id="@+id/tableLayout"
         android:stretchColumns="*">
         <TableRow
-            android:layout_width="match_parent"
+            android:layout_width="120dp"
             android:layout_height="match_parent"
-            android:id="@+id/tableRow">
+            android:id="@+id/tableRow"
+            android:layout_weight="1">
 
             <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="40dp"
                 android:layout_height="fill_parent"
                 android:gravity="center"
                 android:id="@+id/textView"
                 android:onClick="onClick"
                 android:textColor="@color/white"
-                android:textSize="75sp"
+                android:textSize="75dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:background="@drawable/back" />
 
 
             <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="40dp"
                 android:layout_height="fill_parent"
                 android:gravity="center"
                 android:id="@+id/textView2"
                 android:onClick="onClick"
                 android:textColor="@color/white"
                 android:layout_gravity="center_vertical"
-                android:text=""
-                android:textSize="75sp"
+                android:textSize="75dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:background="@drawable/back"/>
 
             <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="40dp"
                 android:layout_height="fill_parent"
                 android:gravity="center"
                 android:id="@+id/textView3"
                 android:onClick="onClick"
                 android:textColor="@color/white"
-                android:text=""
-                android:textSize="75sp"
+                android:textSize="75dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:background="@drawable/back"/>
         </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
+            android:layout_width="120dp"
             android:layout_height="match_parent"
-            android:id="@+id/tableRow2">
+            android:id="@+id/tableRow2"
+            android:layout_weight="1">
 
             <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="40dp"
                 android:layout_height="fill_parent"
                 android:gravity="center"
                 android:id="@+id/textView4"
                 android:onClick="onClick"
                 android:textColor="@color/white"
                 android:text=""
-                android:textSize="75sp"
+                android:textSize="75dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:background="@drawable/back"/>
 
             <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="40dp"
                 android:layout_height="fill_parent"
                 android:gravity="center"
                 android:id="@+id/textView5"
                 android:textColor="@color/white"
                 android:onClick="onClick"
                 android:text=""
-                android:textSize="75sp"
+                android:textSize="75dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:background="@drawable/back"/>
 
             <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="40dp"
                 android:layout_height="fill_parent"
                 android:gravity="center"
                 android:id="@+id/textView6"
@@ -123,49 +123,50 @@
                 android:textColor="@color/white"
                 android:text=""
                 android:textIsSelectable="false"
-                android:textSize="75sp"
+                android:textSize="75dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:background="@drawable/back"/>
         </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
+            android:layout_width="120dp"
             android:layout_height="match_parent"
-            android:id="@+id/tableRow3">
+            android:id="@+id/tableRow3"
+            android:layout_weight="1">
 
             <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="40dp"
                 android:layout_height="fill_parent"
                 android:gravity="center"
                 android:id="@+id/textView7"
                 android:onClick="onClick"
                 android:textColor="@color/white"
                 android:text=""
-                android:textSize="75sp"
+                android:textSize="75dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:background="@drawable/back"/>
 
             <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="40dp"
                 android:layout_height="fill_parent"
                 android:gravity="center"
                 android:id="@+id/textView8"
                 android:onClick="onClick"
                 android:textColor="@color/white"
                 android:text=""
-                android:textSize="75sp"
+                android:textSize="75dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:background="@drawable/back"/>
 
             <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="40dp"
                 android:layout_height="fill_parent"
                 android:gravity="center"
                 android:id="@+id/textView9"
                 android:onClick="onClick"
                 android:textColor="@color/white"
                 android:text=""
-                android:textSize="75sp"
+                android:textSize="75dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:background="@drawable/back"/>
         </TableRow>

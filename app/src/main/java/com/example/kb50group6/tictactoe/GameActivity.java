@@ -40,7 +40,7 @@ public class GameActivity extends AppCompatActivity{
         ReplaceFont.overrideFont(getApplicationContext(), "SERIF", "tangledupinyou.ttf");
 
         fillList();
-        //Toast.makeText(this,"List Filled",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "onCreate..",Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -56,6 +56,7 @@ public class GameActivity extends AppCompatActivity{
 
 
     public void handleTurns(TextView tv) {
+
         playerPressed(tv);
 
         /* The computer makes a move in a random time between 1 and 4 seconds */
@@ -78,7 +79,6 @@ public class GameActivity extends AppCompatActivity{
                        }
                    }
                },random);
-
             for (int x = 1; x <= tvlist.size(); x++) {
                 // Someone won, so we are not allowed to click the buttons anymore (or both could still win)
                 tvlist.get(x - 1).setClickable(false);
@@ -113,7 +113,7 @@ public class GameActivity extends AppCompatActivity{
     }
 
     public void playerPressed(TextView tv){
-        tv.setText("x");
+        tv.setText("X");
         tv.setClickable(false);
         tvlist.remove(tv);
         TextView tv_turn = (TextView)findViewById(R.id.turn_tv);
@@ -124,7 +124,7 @@ public class GameActivity extends AppCompatActivity{
         if(tvlist.size()!=0) {
             int rand = (int) Math.floor(Math.random() * tvlist.size());
             TextView textView = tvlist.get(rand);
-            textView.setText("0");
+            textView.setText("O");
             textView.setClickable(false);
             tvlist.remove(rand);TextView tv_turn = (TextView)findViewById(R.id.turn_tv);
             tv_turn.setText(R.string.your_turn);
@@ -197,6 +197,7 @@ public class GameActivity extends AppCompatActivity{
                         public void onClick(DialogInterface dialog, int id) {
                             // Empty.
                             // Here we decide what happens when the user clicks "Ok"
+                            finish();
                         }
                     })
                     .show();
@@ -210,6 +211,7 @@ public class GameActivity extends AppCompatActivity{
                         public void onClick(DialogInterface dialog, int id) {
                             // Empty.
                             // Here we decide what happens when the user clicks "Ok"
+                            finish();
                         }
                     })
                     .show();
@@ -224,6 +226,8 @@ public class GameActivity extends AppCompatActivity{
                             public void onClick(DialogInterface dialog, int id) {
                                 // Empty.
                                 // Here we decide what happens when the user clicks "Ok"
+                                finish();
+                                Toast.makeText(getBaseContext(), "OKDOEI",Toast.LENGTH_SHORT).show();
                             }
                         })
                         .show();
@@ -307,6 +311,55 @@ public class GameActivity extends AppCompatActivity{
         //Toast.makeText(this,"Pauze",Toast.LENGTH_SHORT).show();
 
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+
+        String[] savedStrings = new String[9];
+
+        TextView tv1 = (TextView)findViewById(R.id.textView);  savedStrings[0] = tv1.getText().toString();
+        TextView tv2 = (TextView)findViewById(R.id.textView2); savedStrings[1] = tv2.getText().toString();
+        TextView tv3 = (TextView)findViewById(R.id.textView3); savedStrings[2] = tv3.getText().toString();
+        TextView tv4 = (TextView)findViewById(R.id.textView4); savedStrings[3] = tv4.getText().toString();
+        TextView tv5 = (TextView)findViewById(R.id.textView5); savedStrings[4] = tv5.getText().toString();
+        TextView tv6 = (TextView)findViewById(R.id.textView6); savedStrings[5] = tv6.getText().toString();
+        TextView tv7 = (TextView)findViewById(R.id.textView7); savedStrings[6] = tv7.getText().toString();
+        TextView tv8 = (TextView)findViewById(R.id.textView8); savedStrings[7] = tv8.getText().toString();
+        TextView tv9 = (TextView)findViewById(R.id.textView9); savedStrings[8] = tv9.getText().toString();
+
+        outState.putStringArray("savedStrings", savedStrings);
+
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle inState){
+        super.onRestoreInstanceState(inState);
+
+        String[] savedStrings = inState.getStringArray("savedStrings");
+
+        TextView tv1 = (TextView)findViewById(R.id.textView);  tv1.setText(savedStrings[0]); if(!tv1.getText().toString().equals("")){tvlist.remove(tv1);}
+        TextView tv2 = (TextView)findViewById(R.id.textView2); tv2.setText(savedStrings[1]); if(!tv2.getText().toString().equals("")){tvlist.remove(tv2);}
+        TextView tv3 = (TextView)findViewById(R.id.textView3); tv3.setText(savedStrings[2]); if(!tv3.getText().toString().equals("")){tvlist.remove(tv3);}
+        TextView tv4 = (TextView)findViewById(R.id.textView4); tv4.setText(savedStrings[3]); if(!tv4.getText().toString().equals("")){tvlist.remove(tv4);}
+        TextView tv5 = (TextView)findViewById(R.id.textView5); tv5.setText(savedStrings[4]); if(!tv5.getText().toString().equals("")){tvlist.remove(tv5);}
+        TextView tv6 = (TextView)findViewById(R.id.textView6); tv6.setText(savedStrings[5]); if(!tv6.getText().toString().equals("")){tvlist.remove(tv6);}
+        TextView tv7 = (TextView)findViewById(R.id.textView7); tv7.setText(savedStrings[6]); if(!tv7.getText().toString().equals("")){tvlist.remove(tv7);}
+        TextView tv8 = (TextView)findViewById(R.id.textView8); tv8.setText(savedStrings[7]); if(!tv8.getText().toString().equals("")){tvlist.remove(tv8);}
+        TextView tv9 = (TextView)findViewById(R.id.textView9); tv9.setText(savedStrings[8]); if(!tv9.getText().toString().equals("")){tvlist.remove(tv9);}
+
+        //Toast.makeText(this, "Restoreinstancestate.",Toast.LENGTH_LONG).show();
+
+        /*
+        for(int i = 0;i<savedStrings.length;i++) {
+            if (savedStrings[i].contains("XOox0")) {
+                //Toast.makeText(this, "savedStrings contains " + savedStrings[i].toString(), Toast.LENGTH_SHORT).show();
+                tvlist.remove(i);
+            }
+        } */
+
+    }
+
 }
 
 
