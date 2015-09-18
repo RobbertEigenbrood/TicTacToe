@@ -58,8 +58,8 @@ public class GameActivity extends AppCompatActivity{
     public void handleTurns(TextView tv) {
         playerPressed(tv);
 
-        /* The computer makes a move in a random time between 0 and 3 seconds */
-        int random = (int) Math.floor(Math.random() * 3000);
+        /* The computer makes a move in a random time between 1 and 4 seconds */
+        int random = (int) Math.floor(Math.random() * 4000) + 1000;
 
         Handler handler = new Handler();
 
